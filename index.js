@@ -5,6 +5,7 @@ const passport = require("passport"); // tell passport to keep track of user ses
 const keys = require("./config/keys");
 const bodyParser = require("body-parser");
 require("./modules/User"); // this need to write in front of "require('./services/passport');""
+require("./modules/Survey");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI, {
@@ -36,6 +37,7 @@ app.use(passport.session());
 //Then, call that function with the express app object.
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // How Express behaves when it's in the production environment
 //  Run the code below in prod environment like heroku
